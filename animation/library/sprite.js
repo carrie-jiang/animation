@@ -14,10 +14,10 @@ var Sprite = function (name, painter, behaviors){
 	}else{
 		throw new Error("Sprite(): painter is required");
 	}
-	if( painter !== undefined ) {
-		this.behaviors = behaviors;
-	}
-	this.behaviors = behaviors;
+	//assign an empty array so that there will be no non-pointer exception
+	this.behaviors = behaviors || [];
+	
+	
 	this.top = 0;
 	this.left = 0;
 	this.width = 10;
@@ -30,8 +30,9 @@ var Sprite = function (name, painter, behaviors){
 Sprite.prototype.paint = function() {
 	this.painter.paint( this, context );
 }
-Sprite.prototype.update = function( time ) {
+Sprite.prototype.update = function( context, time ) {
 	//go through behavior one by one
+	
 	for( var i = 0; i < this.behaviors.length; i++ ){
 		this.behaviors[i].execute( this, context, time );
 	}
