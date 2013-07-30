@@ -1,0 +1,65 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Warping Time</title>
+<style>
+body {
+background: #cdcdcd;
+}
+.controls {
+position: absolute;
+left: 150px;
+top: 10px;
+font: 12px Arial;
+}
+#canvas {
+position: absolute;
+left: 0px;
+top: 20px;
+margin: 20px;
+border: thin inset rgba(100,150,230,0.8);
+background: #efefef;
+}
+#animateButton {
+margin-left: 15px;
+margin-bottom: 10px;
+}
+</style><body>
+<input id='animateButton' type='button' value='Animate'/>
+<canvas id='canvas' width='1000' height='600'>
+Canvas not supported
+</canvas>
+<div id='motionControls' class='controls'>
+<div id='motionRadios'>
+<input type='radio' name='motion' value="1"
+id='linearRadio' checked/>Linear
+<input type='radio' name='motion'
+id='easeInRadio' value="2" />Ease In
+<input type='radio' name='motion'
+id='easeOutRadio' value="3"/>Ease Out
+<input type='radio' name='motion'
+id='easeInOutRadio' value="4"/>Ease In/Out
+<input type='radio' name='motion'
+id='easeInOutRadio' value="5"/>Elastic
+<input type='radio' name='motion'
+id='easeInOutRadio' value="6"/>Bounce
+</div>
+</div>
+<script src='library/timer.js'></script>
+<script src='animationTimer.js'></script>
+<script src='library/requestNextAnimationFrame.js'></script>
+<script src='library/cancelRequestAnimFrame.js'></script>
+<script src='library/sprite.js'></script>
+<script src='tweening.js'></script>
+
+<script type="text/javascript">
+	
+</script>
+
+
+
+
+</body>
+</html>
