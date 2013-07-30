@@ -2,7 +2,7 @@
 Author:Carrie Jiang
 A Timer for supporting time-based animation
 */
-Timer = function (  ) {
+var Timer = function ( ) {
 };
 
 // You can get the elapsed time while the timer is running, or after it's
@@ -25,7 +25,7 @@ Timer.prototype = {
    },
 
    getElapsedTime: function () {
-      if (this.running) return +new Date() - this.startTime;
+        if (this.running) return +new Date() - this.startTime;
       else return this.elapsedTime;
    },
 
