@@ -12,7 +12,7 @@ Timer.prototype = {
    startTime: 0,
    running: false,
    elapsedTime: 0,
-
+       
    start: function () {
       this.startTime = +new Date();
       this.elapsedTime = 0;

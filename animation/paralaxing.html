@@ -1,43 +1,36 @@
-
+ <!DOCTYPE html>
+ <head>
 <style type="text/css">
-
+	#container {
+		width: 2000px;
+		height: 900px;
+	}
 	.gradient {
-	height: 509px;
-	
-	background-image: -moz-linear-gradient(50% 100%, white, #6699FF
-	);
-	background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, from(white), to(#6699FF
-	));
-	width:2000px;
+		width: 100%;
+		height: 30%;
+		background-image: -moz-linear-gradient(50% 100%, white, #6699FF);
+		background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, from(white), to(#6699FF));	
+		
 	}
-	.hill
-	{
-	 margin-top: -500px;
-	 
+	#hill {
+		margin-top: -10%; 
 	}
-	#grass
-	{
-
-	height: 300px;
-	border: 1px solid red;
-	background-image: -moz-linear-gradient(50% 0%, #6A8F45, #006600);
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 0%, from(#6A8F45), to(#006600));
-	margin-top: -100px;
+	#grass {
+		height: 300px;
+		border: 1px solid red;
+		background-image: -moz-linear-gradient(50% 0%, #6A8F45, #006600);
+		background-image: -webkit-gradient(linear, 50% 0%, 50% 0%, from(#6A8F45), to(#006600));
+		margin-top: -100px;
 	}
-	#bird{
-	height: 300px;
-	border: 1px solid redv     
-	}
-
 </style>
-<div class="gradient"><canvas id="canvas2" width="2000" height="280"></canvas></div>
-
-<div class="hill"><canvas id="h_canvas" width="2000" height="900">Alternative text if browser don't support canvas.</canvas>
+</head>
+<div id ="container">
+	<div class="gradient"></div>
+	<div id ="hill"><canvas id="h_canvas" width="2000" height="900">Alternative text if browser don't support canvas.</canvas></div>
 
 </div>
-
 <script src = 'library/requestNextAnimationFrame.js'></script>
 <script src = 'library/sprite.js'></script>
-<script src = 'library/paralaxing.js'>
-
-</script>
+<script src = 'paralaxing.js'></script>
+</body>
+</html>

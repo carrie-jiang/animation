@@ -1,3 +1,4 @@
+
 var fps = 60;
 var canvas = document.getElementById('h_canvas'),
     context = canvas.getContext('2d'),	
@@ -6,7 +7,7 @@ var canvas = document.getElementById('h_canvas'),
 		
 		   var fristImgWidth = sprite.imgWidth - sprite.scrollVal,	   
 			cvsX = sprite.canvasWidth - fristImgWidth,
-			secondImgWidth = (sprite.scrollVal >sprite.canvasWidth)? sprite.scrollVal: sprite.scrollVal,
+			secondImgWidth = sprite.scrollVal,
 			imgX = fristImgWidth;
 		   
 		   //This is the core part 
@@ -35,8 +36,8 @@ var canvas = document.getElementById('h_canvas'),
 	
 	hillOne.cvsY = 400;
 	hillOne.scrollVal = 1;
-	hillOne.canvasWidth = 2000;
-	hillOne.canvasHeight = 700;
+	hillOne.canvasWidth = canvas.width;//2000;
+	hillOne.canvasHeight = canvas.height;//700;
 	hillOne.imgWidth = hillOne.canvasWidth ;
     hillOne.imgHeight = 300;
 	hillOne.velocityX = 60;
@@ -51,8 +52,8 @@ var canvas = document.getElementById('h_canvas'),
 	
 	hillTwo.cvsY = 180;
 	hillTwo.scrollVal = 1;
-	hillTwo.canvasWidth = 2000;
-	hillTwo.canvasHeight = 700;
+	hillTwo.canvasWidth = canvas.width;//2000;
+	hillTwo.canvasHeight = canvas.width;//700;
 	hillTwo.imgWidth = hillTwo.canvasWidth ;
     hillTwo.imgHeight = 380;
 	hillTwo.velocityX = 30;
@@ -73,9 +74,14 @@ var canvas = document.getElementById('h_canvas'),
 			}
 		},
 		paint: function (sprite, context) {
-		
+			//for(var i=0; i<14;i++){
+			//var cell = this.cells[i]; 
 			var cell = this.cells[this.cellIndex]; 
+			//sprite.top+=300;
+			//sprite.left +=300;
+			//console.log(this.cellIndex);
 			context.drawImage(sprite.img, cell.left, cell.top, cell.width, cell.height,sprite.left, sprite.top, cell.width, cell.height);			
+		//}
 		}
 	};
 	var flyBird={
@@ -97,22 +103,23 @@ var canvas = document.getElementById('h_canvas'),
 		
 	},
 	cells =[
+			//be very carefully with the following coordinate, if the the size of the element is bigger than the img, Chrome will not draw it
 			{ left:30, top: 0, width: 165, height: 172 },
-			{ left: 210, top: 0, width: 165, height: 172  },
+			{ left: 210, top: 0, width: 165, height: 172  },			
 			{ left: 390, top: 0, width: 165, height: 172  },		
 			{ left: 555, top: 0, width: 170, height: 172  },
 			{ left: 730, top: 0, width: 180, height: 172  },
 			
 			{ left: 15, top: 168, width: 165, height: 172  },			
 			{ left: 200, top: 168, width: 165, height: 172  },			
-			{ left: 390, top: 168, width: 165, height: 172  },
+			{ left: 390, top: 168, width: 162, height: 170  },
 			{ left: 560, top: 168, width: 165, height: 172  },	
-			{ left: 758, top: 168, width: 165, height: 172  },	
-			
-			{ left: 30, top: 343, width: 165, height: 168  },
-			{ left: 213, top: 343, width: 162, height: 168  },			
-			{ left: 370, top: 343, width: 175, height: 170  },
-			{ left: 546, top: 343, width: 178, height: 170  },
+			{ left: 754, top: 168, width: 162, height: 172  },
+			 
+			{ left: 30, top: 340, width: 165, height: 165  },
+			{ left: 213, top: 340, width: 162, height: 165  },			
+			{ left: 370, top: 340, width: 175, height: 165  },
+			{ left: 546, top: 340, width: 178, height: 165  },
 			
 		],
 	bird = new Sprite("bird" , new SpriteSheetPainter( cells ) , [flyBird]),
@@ -124,10 +131,10 @@ var canvas = document.getElementById('h_canvas'),
 	bird.width = 200;
 	bird.height = 150;
 	bird.velocityX = 80;
-	bird.canvasWidth = 2000;	
+	bird.canvasWidth = canvas.width;//2000;	
 	
 	//The Smurf Sprite
-	cells =[
+	SmurfCells =[
 			{ left:50, top: 0, width: 200, height: 248 },
 			{ left: 300, top: 0, width: 200, height: 248  },
 			{ left: 550, top: 0, width: 200, height: 248  },			
@@ -169,7 +176,7 @@ var canvas = document.getElementById('h_canvas'),
 		}
 		
 	}
-	smurf = new Sprite("smurf" , new SpriteSheetPainter( cells ) , [moveSmurf]);
+	smurf = new Sprite("smurf" , new SpriteSheetPainter( SmurfCells ) , [moveSmurf]);
 	
 	smurfImg = new Image();
 	smurfImg.src = "images/smurf_1.png";
@@ -179,7 +186,7 @@ var canvas = document.getElementById('h_canvas'),
 	smurf.width = 200;
 	smurf.height = 150;
 	smurf.velocityX = 90;
-	smurf.canvasWidth = 2000;
+	smurf.canvasWidth = canvas.width;
 	
 	//Clouds Sprites
 	var cloudPainter = {
@@ -189,8 +196,7 @@ var canvas = document.getElementById('h_canvas'),
 	}, 
 	
 	moveCloud ={ 
-		execute: function(sprite, context, time){	
- //console.log("ere");		
+		execute: function(sprite, context, time){		
 			if( sprite.left + sprite.velocityX >= sprite.canvasWidth){
 				sprite.left = -sprite.width;
 			}
@@ -205,7 +211,7 @@ var canvas = document.getElementById('h_canvas'),
 	cloudOne.width = 297;//400;
 	cloudOne.height = 150;//240;
 	cloudOne.velocityX = 20;
-	cloudOne.canvasWidth = 2000;
+	cloudOne.canvasWidth = canvas.width; //2000;
 	
 	var cloudTwo = new Sprite("cloudTwo" , cloudPainter, [moveCloud]),
 	cloudTwoImg = new Image();
@@ -216,7 +222,7 @@ var canvas = document.getElementById('h_canvas'),
 	cloudTwo.width = 400;
 	cloudTwo.height = 240;
 	cloudTwo.velocityX = 20;
-	cloudTwo.canvasWidth = 2000;
+	cloudTwo.canvasWidth = canvas.width;//2000;
 	
 	var cloudThree = new Sprite("cloudThree" , cloudPainter, [moveCloud]);
 	cloudThree.img = cloudOneImg;
@@ -225,7 +231,7 @@ var canvas = document.getElementById('h_canvas'),
 	cloudThree.width = 297;
 	cloudThree.height = 150;
 	cloudThree.velocityX = 60;
-	cloudThree.canvasWidth = 2000;
+	cloudThree.canvasWidth = canvas.width;//2000;
 	
 	var cloudFour = new Sprite("cloudFour" , cloudPainter, [moveCloud]);
 	cloudFour.img = cloudTwoImg;
@@ -234,20 +240,21 @@ var canvas = document.getElementById('h_canvas'),
 	cloudFour.width = 400;
 	cloudFour.height = 240;
 	cloudFour.velocityX = 80;
-	cloudFour.canvasWidth = 2000;
+	cloudFour.canvasWidth = canvas.width;//2000;
 	
 	var forestPainter = cloudPainter ;
 	forest =  new Sprite("forest" , forestPainter);
 	forestImg = new Image();
 	forestImg.src = "images/forest_7.png";
 	forest.img =forestImg;
-	forest.width = 2000;
+	forest.width = canvas.width; //2000;
 	forest.height = 300;
 	forest.left = 0;
 	forest.top = 620;
 	
 	var counter =0;
 function animate( time ) {
+//for( counter; counter <400; counter++){//
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	
 	hillTwo.paint();
@@ -271,5 +278,6 @@ function animate( time ) {
 	smurf.update( context, time);
 	
 window.requestNextAnimationFrame( animate );	
-}
+//}
+}//
 animate( 0 );
