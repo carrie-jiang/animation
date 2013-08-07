@@ -2,61 +2,67 @@
 <html>
 <head>
 <title>Bucket</title>
-<style>
+<style  type="text/css">
 output {
-color: blue;
-}
+	color: blue;
+	}
 .floatingControls {
-background: rgba(0,0,0,0.1);
-border: thin solid skyblue;
--webkit-box-shadow: rgba(0,0,0,0.3) 2px 2px 4px;
--moz-box-shadow: rgba(100,140,230,0.5) 2px 2px 6px;
-box-shadow: rgba(100,140,230,0.5) 2px 2px 6px;
-padding: 15px;
-font: 12px Arial;
-}
-#canvas {
-background: skyblue;
--webkit-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
--moz-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-cursor: pointer;
-}
+	background: rgba(0,0,0,0.1);
+	border: thin solid skyblue;
+	-webkit-box-shadow: rgba(0,0,0,0.3) 2px 2px 4px;
+	-moz-box-shadow: rgba(100,140,230,0.5) 2px 2px 6px;
+	box-shadow: rgba(100,140,230,0.5) 2px 2px 6px;
+	padding: 15px;
+	font: 12px Arial;
+	}
+#canvas {		
+	background: none repeat scroll 0 0 skyblue;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    display: block;
+    margin: auto;	
+	}
 #scoreboard {
-background: rgba(255,255,255,0.5);
-position: absolute;
-left: 755px;
-top: 20px;
-color: blue;
-font-size: 18px;
-padding: 5px;
+	background: rgba(255,255,255,0.5);
+	position: absolute;
+	left: 755px;
+	top: 20px;
+	color: blue;
+	font-size: 18px;
+	padding: 15px;
 }
-
 #controls {
-position: absolute;
-left: 285px;
-top: 20px;
+	position: absolute;
+	left: 285px;
+	top: 20px;
+}
+#containter {
+	margin-top:0px;
 }
 </style>
 </head>
 <body>
-<canvas id='canvas' width='1400' height='900'>
-Canvas not supported
-</canvas>
-<div id='scoreboard' class='floatingControls'>0</div>
-<div id='controls' class='floatingControls'>
-Launch velocity (m/s):
-<div id='launchVelocityOutput'></div> m/s<br/>
-Launch angle (degrees):
-<div id='launchAngleOutput'></div> degrees<br/>
+<div id="container">
+	
+	
+	<div id='controls' class='floatingControl'>
+		<div>Launch velocity (m/s):</div>
+		<div><span id='launchVelocityOutput'></span> <span>m/s</span> </div>
+		<div>Launch angle (degrees):</div>
+		<div><span id='launchAngleOutput'></span> <span>degrees</span> </div>
+	
+	</div>
+	<div id='scoreboard' class='floatingControls'>0</div>
+	<canvas id='canvas' width='900' height='700'>
+		Canvas not supported
+	</canvas>
 </div>
-<script src = 'test.js'></script>
+<script src = 'library/utilities.js'></script>
 <script src = 'library/requestNextAnimationFrame.js'></script>
 <script src = 'library/sprite.js'></script>
 <script src = 'shootBalls.js'></script>
 <script type="text/javascript">
-launchVelocityOutput = document.getElementById('launchVelocityOutput');
-
+	launchVelocityOutput = document.getElementById('launchVelocityOutput');
 </script>
 
 </body>
